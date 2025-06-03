@@ -10,16 +10,15 @@ final readonly class ProductsGetController{
     }
 
     public function start(int $id){
-
-       $product = $this->service->findProduct($id);
-
-       echo json_encode(
-        [
-            "id" => $product->getId(),
-            "name" => $product->getName(),
-            "price" => $product->getPrice(),
-            "id_factory" => $product->getId_Factory()
-            ]
-        );
+        
+           $product = $this->service->findProduct($id);
+            echo json_encode(
+            [
+                "id" => $product->getId(),
+                "name" => $product->getName(),
+                "price" => $product->getPrice(),
+                "id_factory" => $product->getId_Factory()
+                ]
+            );
     }
 }

@@ -21,6 +21,24 @@ final readonly class ProductsRoutes{
                 "controller" => "Products/ProductsGetsController.php",
                 "method" => "GET",
                 ],
+                [
+                "name" => "products_post",
+                "url" => "/products",
+                "controller" => "Products/ProductsPostController.php",
+                "method" => "POST",
+                ],
+                [
+                "name" => "products_update",
+                "url" => "/products",
+                "controller" => "Products/ProductsUpdateController.php",
+                "method" => "PUT",
+                ],
+                [
+                "name" => "products_delete",
+                "url" => "/products",
+                "controller" => "Products/ProductsDeleteController.php",
+                "method" => "DELETE",
+                ],
             ];
     }
 }

@@ -29,6 +29,10 @@ final readonly class Products{
     }
 
     
+    public static function Create(string $name, int $price, int $id_factory):Products{
+        $product = new Products(null, $name, $price, $id_factory);
 
+        return $product;
+    }
 
 }

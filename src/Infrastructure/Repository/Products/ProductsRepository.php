@@ -6,18 +6,15 @@ use src\Infrastructure\PDO\PDOManager;
 use src\Entity\Products\Products;
 final readonly class ProductsRepository extends PDOManager implements ProductsInterfaceRepository{
 
-    public function findProduct(int $id):Products{
+    public function findProduct(int $id):?Products{
 
         $query = "select * from Products where id = :id ";
         $parameters = [
             'id' => $id
         ];
-
-        $productPrimitive= $this->execute($query, $parameters);
-        $product = $this->toPrimitiveToProducts($productPrimitive[0]);
-
-        return $product;
-
+            $productPrimitive= $this->execute($query, $parameters);
+            $product = $this->toPrimitiveToProducts($productPrimitive[0]);
+            return $product;
     }
 
     public function listProducts():array{
@@ -33,6 +30,50 @@ final readonly class ProductsRepository extends PDOManager implements ProductsIn
 
         return $arr;
     }
+
+
+    public function ProductsPost(Products $product){
+        $query = "insert into Products(name, price, id_factory)
+                    values(:name, :price, :id_factory)";
+
+        $parameters = [
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'id_factory' => $product->getId_Factory()
+            ];
+        $this->execute($query, $parameters);
+
+
+    }
+
+    public function productsUpdate(int $id, string $name, int $price, int $id_factory){
+        $query = "update Products set name= :name, 
+            price = :price, 
+            id_factory = :id_factory
+                where id=:id";
+
+        $parameters = [
+            "id" => $id,
+            "name"=> $name,
+            "price" => $price,
+            "id_factory" => $id_factory
+        ];
+
+        $this->execute($query, $parameters);
+
+    }
+
+    public function productsDelete(int $id){
+        $query = "delete from products
+                    where id=:id";
+        $parameters = [
+            "id" => $id
+        ];
+
+        $this->execute($query, $parameters);
+
+    }
+
 
     public function toPrimitiveToProducts(?array $products):?Products{
         if($products === null){
