@@ -13,9 +13,6 @@ function startRouter(): Router
     // A las rutas actuales, les sumamos las de dominio
     $routes = array_merge($routes, DomainRoutes::getRoutes());
 
-    include_once "Routes/ProductRoutes.php";
-
-    $routes = array_merge($routes, ProductRoutes::getRoutes());
 
     include_once "Routes/ArticleRoutes.php";
     $routes = array_merge($routes, ArticleRoutes::getRoutes());
@@ -26,6 +23,10 @@ function startRouter(): Router
     include_once "Routes/ArticlesRoutes.php";
     $routes = array_merge($routes, ArticlesRoutes::getRoutes());
     
+    include_once "Routes/ProductsRoutes.php";
+    $routes = array_merge($routes, ProductsRoutes::getRoutes());
+
+
     // Como las rutas en este momento son primitivas, tenemos que encapsularlas en un DTO
     $routesClass = [];
     foreach ($routes as $route) {
