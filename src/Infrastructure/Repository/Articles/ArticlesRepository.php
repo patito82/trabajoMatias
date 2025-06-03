@@ -68,4 +68,13 @@ final readonly class ArticlesRepository extends PDOManager implements ArticlesRe
         $this->execute($query,$parameters);
 
     }
+
+    public function ArticlesDelete(int $id){
+        $query = "delete from Articles where id = :id";
+
+        $parameters = ['id' => $id];
+
+        $this->execute($query, $parameters);
+        
+    }
 }

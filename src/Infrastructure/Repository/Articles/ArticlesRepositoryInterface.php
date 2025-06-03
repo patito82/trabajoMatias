@@ -12,4 +12,6 @@ interface ArticlesRepositoryInterface {
 
     public function articlesPost(Articles $art);
 
+    public function ArticlesDelete(int $id);
+
 }

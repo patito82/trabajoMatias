@@ -31,11 +31,17 @@ final readonly class ArticlesRoutes{
             
             ],
             [
-                "name" => "articles_update",
-                "url" => "/articles",
-                "controller" => "Articles/ArticlesUpdateController.php",
-                "method" => "PUT",
-            ]
+            "name" => "articles_update",
+            "url" => "/articles",
+            "controller" => "Articles/ArticlesUpdateController.php",
+            "method" => "PUT",
+            ],
+            [
+            "name" => "articles_delete",
+            "url" => "/articles",
+            "controller" => "Articles/ArticlesDeleteController.php",
+            "method" => "DELETE",
+            ],
         ];
     }
 
