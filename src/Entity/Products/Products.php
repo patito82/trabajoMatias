@@ -2,7 +2,7 @@
 
 namespace src\Entity\Products;
 
-final readonly class Products{
+final class Products{
 
     public function __construct(
         private ?int $id,
@@ -28,11 +28,15 @@ final readonly class Products{
         return $this->id_factory;
     }
 
-    
     public static function Create(string $name, int $price, int $id_factory):Products{
         $product = new Products(null, $name, $price, $id_factory);
 
         return $product;
     }
 
+    public function modify(string $name, int $price, int $id_factory){
+        $this->name = $name;
+        $this->price = $price;
+        $this->id_factory = $id_factory;
+    }
 }

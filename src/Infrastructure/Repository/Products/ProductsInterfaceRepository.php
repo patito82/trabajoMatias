@@ -9,7 +9,7 @@ Interface ProductsInterfaceRepository{
 
     public function ProductsPost(Products $product);
 
-    public function productsUpdate(int $id, string $name, int $price, int $id_factory);
+    public function productsUpdate(Products $product);
 
     public function productsDelete(int $id);
 

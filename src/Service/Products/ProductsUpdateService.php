@@ -14,7 +14,8 @@ final readonly class ProductsUpdateService{
     }
 
     public function productsUpdate(int $id, string $name, int $price, int $id_factory){
-        $this->repository->productsUpdate($id, $name, $price, $id_factory);
-
+        $product = $this->repository->findProduct($id);
+        $product->modify($name, $price, $id_factory);
+        $this->repository->productsUpdate($product);
     }
 }

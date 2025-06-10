@@ -46,17 +46,17 @@ final readonly class ProductsRepository extends PDOManager implements ProductsIn
 
     }
 
-    public function productsUpdate(int $id, string $name, int $price, int $id_factory){
+    public function productsUpdate(Products $product){
         $query = "update Products set name= :name, 
             price = :price, 
             id_factory = :id_factory
                 where id=:id";
 
         $parameters = [
-            "id" => $id,
-            "name"=> $name,
-            "price" => $price,
-            "id_factory" => $id_factory
+            "id" => $product->getId(),
+            "name"=> $product->getName(),
+            "price" => $product->getPrice(),
+            "id_factory" => $product->getId_Factory()
         ];
 
         $this->execute($query, $parameters);
